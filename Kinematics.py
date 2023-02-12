@@ -40,6 +40,24 @@ class Kinematics:
 A particle is in location x1 at time t1 and later goes to x2 at time t2
         """
         return (x2-x1)/(t2-t1)
+    def getDisplacementFromAccNTime(acc, t):
+        return 0.5 * acc * (t**2)
+
+    def getChangeinVelocity(acc, t):
+        return acc*t
+    def printEquationsOfMotion():
+        print("v = v0 + at")
+        print("x = x0 +v0t + 1/2at^2")
+        print("v^2 = v0^2 + 2a(x-x0)")
+        print("x-x0 = ((v0 + v)/2)t")
+    def eqOfMotion1(acc, t, v0=0):
+        return v0 + getChangeinVelocity(acc, t)
+    def eqOfMotion2(t, acc, x0=0,v0=0):
+        return x0 + v0 + getDisplacementFromAccNTime(acc, t)
+    def eqOfMotion3(acc, t, x, v0=0, x0=0):
+        return v0**2 + 2*a*getDisplacement(x0, x)
+    def eqOfMotion4(x2, v, t, v0=0, x1=0):
+        return t*getAverageVelocity(x1, x2, t1, t2)
 
     def graphDisplacementVsTime(velocity, initialDisplacement=0):
         """
@@ -60,5 +78,5 @@ A particle is in location x1 at time t1 and later goes to x2 at time t2
 
 
 
-        
+print(Kinematics.getDisplacementFromAccNTime(4,2))
         
